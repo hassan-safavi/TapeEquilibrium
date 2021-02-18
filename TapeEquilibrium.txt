@@ -1,0 +1,23 @@
+   //TapeEquilibrium Problem    written by Hassan Safavi
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+  int A[]={3,1,2,4,3};
+  int N= sizeof(A)/sizeof(A[0]);
+  int sum=A[0], lsum=0,rsum=0, minDiff=10000;       //midDiff kan should be a big number  
+  for (int i=1;i<N; i++)                           //First we need to calculate sum of array     
+  {  
+      sum+=A[i]; 
+  } 
+    
+  for (int P=0;P<N; P++)
+  {
+      lsum+=A[P];                                 //the left sum part is calculated in on-line manner  
+      rsum= sum-lsum;
+      if (abs(lsum - rsum) <minDiff)               // here the minDiff between sum of left and right part of the tape is calculated in on-line manner    
+           minDiff = abs(lsum - rsum); 
+  }
+  cout << minDiff;
+}
